@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Ex-Alunos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="site-title">Gerenciador de Ex-Alunos</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" data-tab="editar-aluno">Editar Perfil</a></li>
+                    <li><a href="#" data-tab="ver-ex-alunos">Ver Ex-Alunos</a></li>
+                    <li><a href="#" data-tab="exp-profissional">Experiência Profissional</a></li>
+                </ul>
+            </nav>
+            <a href="#" data-tab="cadastro" class="login-link">Cadastro / Login</a>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <section id="ver-perfil" class="tab-content"></section>
+        <section id="exp-profissional" class="tab-content">
+            <h2>Minha Experiência Profissional</h2>
+            <form id="editar-empresa">
+                <div id="empregos-list">
+                </div>
+            </form>
+
+        </section>
+        <section id="editar-aluno" class="tab-content">
+            <h2>Editar Meu Perfil</h2>
+            <form id="edit-aluno-form">
+                <div class="form-group"><label for="edit-matricula">Matrícula:</label><input type="text" id="edit-matricula" required readonly></div>
+                <div class="form-group"><label for="edit-nome">Nome:</label><input type="text" id="edit-nome" required></div>
+                <div class="form-group"><label for="edit-ira">IRA (0.00 - 5.00):</label><input type="number" id="edit-ira" step="0.01" min="0" max="5" required></div>
+                <div class="form-group"><label for="edit-data-nasc">Data de Nascimento:</label><input type="date" id="edit-data-nasc" required></div>
+                <div class="form-group"><label for="edit-email">Email:</label><input type="email" id="edit-email" required></div>
+                <div class="form-group"><label for="edit-linkedin">LinkedIn (URL):</label><input type="url" id="edit-linkedin"></div>
+                <div class="form-group"><label for="edit-semestres-cursados">Semestres Cursados:</label><input type="number" id="edit-semestres-cursados" min="1" required></div>
+                <div class="form-group"><label for="edit-data-inicio-curso">Data de Início do Curso:</label><input type="date" id="edit-data-inicio-curso" required></div>
+                <div class="form-group"><label for="edit-data-fim-curso">Data de Fim do Curso:</label><input type="date" id="edit-data-fim-curso" required></div>
+                <div class="form-group"><label for="edit-idcurso">Nome do Curso (ID):</label><input type="text" id="edit-idcurso" required></div>
+                <div class="form-group"><label for="edit-senha">Nova Senha:</label><input type="password" id="edit-senha" placeholder="Deixe em branco para não alterar"></div>
+                <button type="submit">Salvar Edições</button>
+            </form>
+            <p id="edit-form-message" class="message"></p>
+        </section>
+        <section id="ver-ex-alunos" class="tab-content">
+            <h2>Ex-Alunos Cadastrados</h2>
+            <table id="alunos-table">
+                <thead>
+                    <tr><th>Nome</th><th>Matrícula</th><th>IRA</th><th>Data Nasc.</th><th>Email</th><th>LinkedIn</th><th>Sem. Curs.</th><th>Início Curso</th><th>Fim Curso</th><th>Curso</th><th>Ações</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <p id="list-message" class="message"></p>
+        </section>
+        <section id="cadastro" class="tab-content">
+            <h2>Cadastro / Login</h2>
+            <div class="auth-forms">
+                <div class="form-card">
+                    <h3>Login</h3>
+                    <form id="login-form">
+                        <div class="form-group"><label for="login-matricula">Matrícula:</label><input type="text" id="login-matricula" required></div>
+                        <div class="form-group"><label for="login-senha">Senha:</label><input type="password" id="login-senha" required></div>
+                        <button type="submit">Entrar</button>
+                    </form>
+                    <p id="login-message" class="message"></p>
+                </div>
+                <div class="form-card register-card">
+                    <h3>Registrar Novo Perfil Completo</h3>
+                    <form id="register-form">
+                        <fieldset>
+                            <legend>Dados Pessoais e Acadêmicos</legend>
+                            <fieldset>
+                                <legend>
+                                    Seu curso
+                                </legend>
+                                <div class="form-group"><label for="register-idcurso">Nome do Curso (ID):</label><input type="text" id="register-idcurso" required></div>
+                                <div class="form-group"><label for="register-duracao-curso">Duração do Curso em Anos:</label><input type="text" id="register-duracao-curso" required></div>
+                            </fieldset>
+                            <div class="form-group"><label for="register-matricula">Matrícula:</label><input type="text" id="register-matricula" required></div>
+                            <div class="form-group"><label for="register-senha">Senha:</label><input type="password" id="register-senha" required></div>
+                            <div class="form-group"><label for="register-nome-completo">Nome Completo:</label><input type="text" id="register-nome-completo" required></div>
+                            <div class="form-group"><label for="register-data_nasc">Data de Nascimento:</label><input type="date" id="register-data_nasc" required></div>
+                            <div class="form-group"><label for="register-email">Email:</label><input type="email" id="register-email" required></div>
+                            <div class="form-group"><label for="register-linkedin">LinkedIn (URL):</label><input type="url" id="register-linkedin"></div>
+                            <div class="form-group"><label for="register-semestres-cursados">Semestres Cursados:</label><input type="number" id="register-semestres-cursados" min="1" required></div>
+                            <div class="form-group"><label for="register-data-inicio-curso">Data de Início do Curso:</label><input type="date" id="register-data-inicio-curso" required></div>
+                            <div class="form-group"><label for="register-data-fim-curso">Data de Fim do Curso:</label><input type="date" id="register-data-fim-curso" required></div>
+                            <div class="form-group"><label for="register-ira">IRA:</label><input type="number" id="register-ira" step="0.01" min="0" max="5" required></div>
+                        </fieldset>                   
+                        <!-- SEÇÃO DE EMPREGO ATUALIZADA -->
+                        <fieldset>
+                            <legend>Experiência Profissional (se aplicável)</legend>
+                            <div class="form-group"><label for="register-emprego-cargo">Cargo:</label><input type="text" id="register-emprego-cargo"></div>
+                            <div class="form-group"><label for="register-emprego-descricao">Descrição do Cargo:</label><textarea id="register-emprego-descricao" rows="3"></textarea></div>
+                            <div class="form-group"><label for="register-emprego-salario">Salário (R$):</label><input type="number" id="register-emprego-salario" min="0" step="100"></div>
+                            <div class="form-group"><label for="register-emprego-inicio">Data de Início:</label><input type="date" id="register-emprego-inicio"></div>
+                            <div class="form-group"><label for="register-emprego-fim">Data de Fim (deixe em branco se for atual):</label><input type="date" id="register-emprego-fim"></div>
+                            <!-- EMPRESA -->
+                            <fieldset>
+                            <legend>Sobre a empresa</legend>                           
+                                <div class="form-group"><label for="register-empresa-nome">Nome:</label><input type="text" id="register-empresa-nome"></div>
+                                <div class="form-group"><label for="register-empresa-ramo">Ramo:</label><input type="text" id="register-empresa-ramo"></div>
+                                <div class="form-group"><label for="register-empresa-setor">Setor:</label><input type="text" id="register-empresa-setor"></div>
+                            </fieldset>
+
+                            <!-- EMPRESA -->
+                        </fieldset>
+                        <button type="submit" id="registrar-novo-exaluno">Registrar Perfil Completo</button>
+                    </form>
+                    <p id="register-message" class="message"></p>
+                </div>
+            </div>
+            <p id="auth-status-message" class="message"></p>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

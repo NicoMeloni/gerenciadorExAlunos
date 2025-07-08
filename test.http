@@ -1,0 +1,273 @@
+GET http://localhost:3000/cursos/
+
+GET http://localhost:3000/cursosexternos/
+GET http://localhost:3000/exalunos/
+GET http://localhost:3000/competencias/
+GET http://localhost:3000/empregos/
+GET http://localhost:3000/empresas/
+GET http://localhost:3000/posgraduacao/
+
+GET http://localhost:3000/projetosconclusao/
+
+DELETE http://localhost:3000/cursos/Administração
+
+DELETE http://localhost:3000/exalunos/20210001
+
+
+### Inserir novo comentário
+POST http://localhost:3000/comentarios
+Content-Type: application/json
+
+{
+  "texto": "Gostei muito da pós-graduação!",
+  "data_coment": "2025-06-28",
+  "idexaluno": "20210001"
+}
+
+GET http://localhost:3000/comentarios/
+
+DELETE http://localhost:3000/comentarios/4
+
+
+PUT http://localhost:3000/comentarios/2
+Content-Type: application/json
+
+{
+  "texto": "skibidi toilet"
+}
+
+
+### Criar novo curso
+POST http://localhost:3000/cursos
+Content-Type: application/json
+
+{
+  "nome_curso": "Administração",
+  "duracao": "4 years"
+}
+
+
+POST http://localhost:3000/cursos
+Content-Type: application/json
+
+{
+  "nome_curso": "Administração",
+  "duracao": "4 years"
+}
+
+### ✅ Vincular competência
+POST http://localhost:3000/competencia-aluno
+Content-Type: application/json
+
+{
+  "matricula": "20210001",
+  "titulo_comp": "Inglês Avançado"
+}
+
+### ✅ Buscar competências de um aluno
+GET http://localhost:3000/competencia-aluno/20210001
+
+### ✅ Buscar alunos por uma competência
+GET http://localhost:3000/competencia-aluno/comp/Sociabilidade
+
+### ✅ Atualizar competência de um aluno
+PUT http://localhost:3000/competencia-aluno/223001379/competencias/Liderança
+Content-Type: application/json
+
+{
+  "novo_titulo_comp": "Comunicação"
+}
+
+### ✅ Remover competência de um aluno
+DELETE http://localhost:3000/alunos/223001379/competencias/Comunicação
+
+GET http://localhost:3000/competencias/
+
+
+GET http://localhost:3000/competencias/Sociabilidade
+
+POST http://localhost:3000/competencias/
+Content-Type: application/json
+
+{
+    "titulo_comp": "Desenvolvedor Java Pleno",
+    "descr_comp": "Vasta experiência com programação em Java"
+}
+
+DELETE http://localhost:3000/competencias/Desenvolvedor Java Pleno
+
+GET http://localhost:3000/cursoexterno-aluno/alunos/1
+GET http://localhost:3000/cursoexterno-aluno/222001369
+DELETE http://localhost:3000/cursoexterno-aluno/222001369/1
+
+POST http://localhost:3000/cursoexterno-aluno/
+Content-Type: application/json
+
+{
+    "matricula": "222001369",
+    "id_curs_ext": 2,
+    "data_fim_curs_ext": "2021-06-01",
+    "duracao_curs_ext": "1.5 year",
+    "data_inicio_curs_ext": "2020-06-02"
+}
+###TESTES CURSOS EXTERNOS
+GET http://localhost:3000/cursosexternos/
+
+GET http://localhost:3000/cursosexternos/2
+
+POST http://localhost:3000/cursosexternos/
+Content-Type: application/json
+
+{
+    "nome_curs_ext": "Data Science",
+    "instituicao": "ABC",
+    "duracao_curs_ext": "2 years",
+    "descr_curs_ext": "Curso para aprender a lidar com dados"
+}
+
+POST http://localhost:3000/cursosexternos/
+Content-Type: application/json
+
+{
+    "nome_curs_ext": "TikToker",
+    "instituicao": "ABC",
+    "duracao_curs_ext": "10 years",
+    "descr_curs_ext": "Curso para aprender a fazer dancinha"
+}
+
+DELETE http://localhost:3000/cursosexternos/3
+
+###TESTE EMPREGOS
+GET http://localhost:3000/empregos/
+
+GET http://localhost:3000/empregos/6
+
+POST http://localhost:3000/empregos/
+Content-Type: application/json
+
+{
+    "descr_cargo": "Preparar smoothies de café",
+    "cargo": "Preparador de smoothies",
+    "data_inicio_empr": "2019-08-08",
+    "data_fim_empr": "2020-08-12",
+    "salario": 1200,
+    "duracao_empr": "1.2 years",
+    "idexaluno": "222001369",
+    "idempresa": 7
+}
+
+DELETE http://localhost:3000/empregos/9
+
+
+###TESTE EMPRESAS (TALVEZ ADICIONAR UPDATE)
+GET http://localhost:3000/empresas/
+
+GET http://localhost:3000/empresas/7
+POST http://localhost:3000/empresas/
+Content-Type: application/json
+
+{
+    "nome_empresa": "Jubilini",
+    "ramo_atuacao": "Secrets",
+    "setor": "privado"
+}
+
+DELETE http://localhost:3000/empresas/13
+
+###TESTES EX ALUNOS
+GET http://localhost:3000/exalunos/
+
+
+
+
+GET http://localhost:3000/exalunos/222001369
+
+POST http://localhost:3000/exalunos/
+Content-Type:  application/json
+
+{
+    "matricula": "202202001",
+    "nome": "Macaquito Cimpanucci",
+    "ira":9,
+    "data_nasc":"777-07-07",
+    "email": "cimpa.esoterisms@devachan.com",
+    "linkedin": "https://linkedin.com/in/CimpaMisteries",
+    "semestres_cursados": 0,
+    "data_inicio_curso": "788-08-08",
+    "data_fim_curso": "888-08-08",
+    "idcurso": "Ciência da Computação"
+}
+
+DELETE http://localhost:3000/exalunos/202202001
+
+###TESTANDO ORIENTADOR
+
+GET http://localhost:3000/orientadores
+
+
+GET http://localhost:3000/orientadores/12121
+
+POST http://localhost:3000/orientadores
+Content-Type: application/json
+
+{
+    "matricula": 12121,
+    "nome_ori": "Marco Aurelio",
+    "departamento": "CIC"
+}
+
+DELETE http://localhost:3000/orientadores/12121
+
+###TESTE POSGRADUAÇÃO
+
+GET http://localhost:3000/posgraduacao
+
+
+GET http://localhost:3000/posgraduacao/6
+
+POST http://localhost:3000/posgraduacao
+Content-Type: application/json
+
+{
+    "pais": "Bélgica",
+    "instituicao": "Universidade Católica de Leuven",
+    "area_pos": "Deep Learning",
+    "tipo": "Mestrado",
+    "duracao_pos": "2 years",
+    "data_inicio_pos": "2020-09-09",
+    "data_fim_pos": "2020-10-24",
+    "idexaluno": "222001369"
+}
+
+DELETE http://localhost:3000/posgraduacao/6
+
+###TESTE PROJETO CONCLUSÃO
+GET http://localhost:3000/projetosconclusao
+
+
+
+GET http://localhost:3000/projetosconclusao/1
+
+POST http://localhost:3000/projetosconclusao
+Content-Type: application/json
+
+{
+
+    "titulo_proj": "Esoteric bananas learning",
+    "area_proj": "Deep Learning",
+    "nota": 7.5,
+    "idexaluno": "222001369",
+    "idorientador": "12121"
+}
+
+GET http://localhost:3000/projetsconclusao/1
+
+
+
+
+
+
+
+
+
+
