@@ -158,6 +158,19 @@ Content-Type: application/json
 
 DELETE http://localhost:3000/empregos/9
 
+PUT http://localhost:3000/api/empregos/10
+Content-Type: application/json
+
+{
+    "idemprego": 10,
+    "descricao": "aaaa",
+    "cargo":"aaaa",
+    "data_inicio_empr":"2020-01-01",
+    "data_fim_empr":"2021-01-02",
+    "salario": 20000,
+    "idexaluno": "131"
+}
+
 
 ###TESTE EMPRESAS (TALVEZ ADICIONAR UPDATE)
 GET http://localhost:3000/empresas/
@@ -261,6 +274,10 @@ Content-Type: application/json
 }
 
 GET http://localhost:3000/projetsconclusao/1
+
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
 
 
 

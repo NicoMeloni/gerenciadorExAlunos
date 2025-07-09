@@ -112,6 +112,7 @@ async function detalhesPorMatricula(req, res){
 
 async function attEmprego(req, res) {
   const id_emprego = req.params.id_emprego;
+  req.body.idemprego = id_emprego;
   empregoRepo.atualizarEmprego(req.body); 
 }
 

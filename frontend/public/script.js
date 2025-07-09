@@ -271,6 +271,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    document.getElementById('deletar-exaluno').addEventListener('click', async () => {
+        if (!userMatricula) {
+            alert("Nenhum aluno logado.");
+            return;
+        }
+
+        const confirmacao = confirm("Tem certeza que deseja excluir permanentemente seu perfil?");
+        if (!confirmacao) return;
+
+        try {
+            const response = await fetch(`/exalunos/${userMatricula}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': userMatricula
+                }
+            });
+
+            if (response.ok) {
+                alert("Perfil excluído com sucesso.");
+                userMatricula = null; // limpa a variável de login
+                showTab('cadastro'); // volta para a tela de login
+            } else {
+                alert("Erro ao excluir o perfil.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Erro inesperado ao excluir o perfil.");
+        }
+    });
+
+
     editAlunoForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const matricula = document.getElementById('edit-matricula').value;
