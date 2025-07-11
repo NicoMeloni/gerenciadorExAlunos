@@ -108,11 +108,20 @@ async function deletarExAluno(matricula) {
   await pool.query('DELETE FROM ExAluno WHERE matricula = $1', [matricula]);
 }
 
+async function salvarImagemExaluno(matricula, imagemBuffer) {
+  const query = `
+    INSERT INTO fotos_exaluno (matricula, imagem)
+    VALUES ($1, $2)
+  `;
+  await pool.query(query, [matricula, imagemBuffer]);
+}
+
 module.exports = {
     buscarTodosExAlunos,
     buscarExAlunoPorId,
     alunoValido,
     criarExAluno,
     atualizar,
-    deletarExAluno
+    deletarExAluno,
+    salvarImagemExaluno
 };

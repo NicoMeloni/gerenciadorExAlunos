@@ -10,4 +10,9 @@ router.get('/exaluno/:matricula/detalhes', authController.detalhesPorMatricula);
 router.put('/exaluno/:matricula', authenticateToken, authController.atualizarExAluno);
 router.get('/me/empregos', authenticateToken, authController.empregos);
 router.put('/empregos/:id_emprego', authController.attEmprego);
+router.post(
+  '/upload-imagem',
+  authController.upload.single('imagem'), 
+  authController.uploadImagem
+);
 module.exports = router;

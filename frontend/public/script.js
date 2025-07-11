@@ -302,7 +302,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    document.getElementById('salvarImagemBtn').addEventListener('click', async () => {
+        const input = document.getElementById('imagem');
+        const file = input.files[0];
+        if (!file) {
+            alert("Selecione uma imagem primeiro.");
+            return;
+        }
 
+        const formData = new FormData();
+        formData.append('imagem', file);
+
+        try {
+            const response = await fetch('/api/upload-imagem', {
+                method: 'POST',
+                headers: {
+                    'Authorization': userMatricula  
+                },
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error('Erro ao enviar a imagem.');
+            }
+
+            alert('Imagem enviada com sucesso!');
+        } catch (error) {
+            console.error('Erro ao enviar a imagem:', error);
+            alert('Erro ao enviar a imagem.');
+        }
+    });
+
+    
     editAlunoForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const matricula = document.getElementById('edit-matricula').value;

@@ -6,6 +6,9 @@ const projConclusaoRepo = require("../repositories/projetoConclusaoRepository");
 const posGraduacaoRepo = require("../repositories/posGraduacaoRepository");
 const comentarioRepo = require("../repositories/comentarioRepository");
 const { activeSessions } = require("../middlewares/authMiddleware");
+const multer = require('multer');
+const upload = multer();
+
 
 async function registrarExAlunoCompleto(req, res){
     try {
@@ -53,6 +56,25 @@ async function login(req, res){
         console.error('Erro ao fazer login:', err);
         res.status(500).json({ error: 'Erro interno do servidor.' });
     }
+}
+
+async function uploadImagem(req, res) {
+  try {
+    const matricula = req.headers.authorization; // ou de outro lugar
+    if (!matricula) {
+      return res.status(401).json({ error: 'Usuário não autenticado' });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+    }
+
+    await exAlunoRepo.salvarImagemExaluno(matricula, req.file.buffer);
+    return res.status(200).json({ message: 'Imagem salva com sucesso' });
+  } catch (err) {
+    console.error('Erro ao salvar imagem:', err);
+    return res.status(500).json({ error: 'Erro interno ao salvar imagem' });
+  }
 }
 
 async function perfil(req, res){
@@ -159,7 +181,9 @@ module.exports = {
     empregos,
     attEmprego,
     detalhesPorMatricula,
-    atualizarExAluno
+    atualizarExAluno,
+    uploadImagem,
+    upload
 };
 
 
